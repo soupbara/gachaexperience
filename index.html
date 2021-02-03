@@ -6,6 +6,7 @@
 </head>
 <body>
   <script type="text/javascript" src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <div class="row">
     <div class="column">
       Money: <span class="money"></span>
@@ -24,14 +25,22 @@
     </div>
     <div class="column">
       <button onClick="mineGold(1)">Work</button>
+      
       <button style="display:none" class="show_passion" onClick="upgradePassion(1)">
-        Increase Passion:
+        Buy Poster:
         $<span class="passion_cost"></span>
       </button>
+      
+      <button style="display:none" class="show_passion" onClick="upgradePassion(1)">
+        Buy Figurine:
+        $<span class="passion_cost"></span>
+      </button>
+      
       <button style="display:none" class="show_dogecoin_miner" onClick="hireDogecoinMiner(1)">
         Hire DogeCoin Miners:
         $<span class="dogecoin_miner_cost"></span>
       </button>
+      
       <button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
         Upgrade DogeCoinMiners:
         $<span class="miner_pickaxe_cost"></span>
@@ -41,5 +50,12 @@
   <div id="textbox">
     <output type="text" id="id01" value="" />
   </div><!--end textbox-->
+
+<button href="#!" class="click">Pull 10</button>
+
+	<div id="pop">
+  	<div class="fade"></div>
+    <div class="popup">that was a terrible pull</div>
+  </div>
 </body>
 </html>
