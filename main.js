@@ -1,18 +1,3 @@
-//gacha mechanic
-//var rate = Math.random();
-//function gachaPull() {
-//	if (rate < 0.5)
-  	// 50% chance of being 1 star
-//  else if (rate < 0.8)
-  	// 30% chance of being 2 star
-//	else if (rate < 0.95)
-  	// 15% chance of being 3 star
-//  else if (rate < 0.99)
-  	// 4% chance of being 4 star
-//  else
-  	// 1% chance of being 5 star
-//}
-
 var timer = 256
 var tickRate = 16
 var visualRate = 256
@@ -22,7 +7,7 @@ var costs = {"passion":15,
 	     "miner_pickaxe":15}
 var growthRate = {"passion":1.25,
 		  "dogecoin_miner":1.25,
-	     	  "miner_pickaxe":1.75}
+	     "miner_pickaxe":1.75}
 
 var increments = [{"input":["dogecoin_miner","miner_pickaxe"],
 		   "output":"money"}]
@@ -81,7 +66,7 @@ function hireDogecoinMiner(num){
 
 function writeText(text){
 	document.getElementById('id01').value = text + " " + document.getElementById('id01').value
-}
+} //note, make it so that the text is line by line
 
 function updateText(){
     for (var key in unlocks){
@@ -133,3 +118,29 @@ window.setInterval(function(){
 
 }, tickRate);
 
+//gacha mechanic
+var rate = Math.random();
+function gachaPull() {
+	if (rate < 0.5) {
+  	 //50% chance of being 1 star
+    }
+  else if (rate < 0.8) {
+  	// 30% chance of being 2 star
+	}
+	else if (rate < 0.95) {
+  	// 15% chance of being 3 star
+	}
+  else if (rate < 0.99) {
+  	// 4% chance of being 4 star
+	}
+  else {
+  	// 1% chance of being 5 star
+	}
+};
+
+//popup box for gacha
+$(document).ready(function() {
+	$('.click, .fade').click(function(){
+  	$('#pop').fadeToggle();
+  });
+});
