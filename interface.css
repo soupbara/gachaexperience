@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="interface.css" />
+  <title>The Gacha Experience</title>
+</head>
+<body>
+  <script type="text/javascript" src="main.js"></script>
+  <div class="row">
+    <div class="column">
+      Money: <span class="money"></span>
+      <span style="display:none" class="show_passion">
+        Passion:
+        <span class="passion"></span>
+      </span>
+      <span style="display:none" class="show_dogecoin_miner">
+        Miners:
+        <span class="dogecoin_miner"></span>
+      </span>
+      <span style="display:none" class="show_dogecoin_miner_pickaxe">
+        Miner Pickaxe Level:
+        <span class="miner_pickaxe"></span>
+      </span>
+    </div>
+    <div class="column">
+      <button onClick="mineGold(1)">Work</button>
+      <button style="display:none" class="show_passion" onClick="upgradePassion(1)">
+        Increase Passion:
+        $<span class="passion_cost"></span>
+      </button>
+      <button style="display:none" class="show_dogecoin_miner" onClick="hireDogecoinMiner(1)">
+        Hire DogeCoin Miners:
+        $<span class="dogecoin_miner_cost"></span>
+      </button>
+      <button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
+        Upgrade DogeCoinMiners:
+        $<span class="miner_pickaxe_cost"></span>
+      </button>
+    </div><!--end column-->
+  </div><!--end row-->
+  <div id="textbox">
+    <output type="text" id="id01" value="" />
+  </div><!--end textbox-->
+</body>
+</html>
