@@ -2,18 +2,25 @@ var timer = 256
 var tickRate = 16
 var visualRate = 256
 var resources = {"money":0,"passion":1}
-var costs = {"passion":15,
-	     "dogecoin_miner":200,
+var costs = {"poster":20,
+		 "figure":100,
+		 "pillow":200,
+	     "dogecoin_miner":500,
 	     "miner_pickaxe":15}
-var growthRate = {"passion":1.25,
-		  "dogecoin_miner":1.25,
+		 
+var growthRate = {"poster":1.25,
+		 "figure":1.25,
+		 "pillow":1.25,
+		 "dogecoin_miner":1.25,
 	     "miner_pickaxe":1.75}
 
 var increments = [{"input":["dogecoin_miner","miner_pickaxe"],
 		   "output":"money"}]
 
-var unlocks = {"passion":{"money":10},
-	       "dogecoin_miner":{"money":100},
+var unlocks = {"poster":{"money":10},
+		   "figure":{"money":50},
+		   "pillow":{"money":100},
+	       "dogecoin_miner":{"money":250},
 	       "miner_pickaxe":{"dogecoin_miner":1}}
 
 function mineGold(num){
@@ -33,14 +40,38 @@ function upgradeMinerPickaxe(num){
     }
 };
 
-function upgradePassion(num){
-    if (resources["money"] >= costs["passion"]*num){
+function buyPoster(num){
+    if (resources["money"] >= costs["poster"]*num){
 	resources["passion"] += num
-	resources["money"] -= num*costs["passion"]
+	resources["money"] -= num*costs["poster"]
 	
-	costs["passion"] *= growthRate["passion"]
+	costs["poster"] *= growthRate["poster"]
+	
+  writeText("You bought a poster. You feel a sense of accomplishment.")
+	updateText()
+    }
+};
+
+function buyFigure(num){
+    if (resources["money"] >= costs["figure"]*num){
+	resources["passion"] += num
+	resources["money"] -= num*costs["figure"]
+	
+	costs["figure"] *= growthRate["figure"]
 	
   writeText("You bought an anime figure. You feel a burning passion from within.")
+	updateText()
+    }
+};
+
+function buyPillow(num){
+    if (resources["money"] >= costs["pillow"]*num){
+	resources["passion"] += num
+	resources["money"] -= num*costs["pillow"]
+	
+	costs["pillow"] *= growthRate["pillow"]
+	
+  writeText("You bought a body pillow. There's no turning back.")
 	updateText()
     }
 };
@@ -65,7 +96,7 @@ function hireDogecoinMiner(num){
 };
 
 function writeText(text){
-	document.getElementById('id01').value = text + " " + document.getElementById('id01').value
+	document.getElementById('id01').value = text
 } //note, make it so that the text is line by line
 
 function updateText(){

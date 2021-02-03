@@ -10,14 +10,13 @@
   <div class="row">
     <div class="column">
       Money: <span class="money"></span>
-      <span style="display:none" class="show_passion">
-        Passion:
-        <span class="passion"></span>
-      </span>
-      <span style="display:none" class="show_dogecoin_miner">
+      <p> Passion: <span class="passion"></span> </p>  
+	  
+	  <span style="display:none" class="show_dogecoin_miner">
         Miners:
         <span class="dogecoin_miner"></span>
       </span>
+	  
       <span style="display:none" class="show_dogecoin_miner_pickaxe">
         Miner Pickaxe Level:
         <span class="miner_pickaxe"></span>
@@ -26,14 +25,19 @@
     <div class="column">
       <button onClick="mineGold(1)">Work</button>
       
-      <button style="display:none" class="show_passion" onClick="upgradePassion(1)">
+      <button style="display:none" class="show_poster" onClick="buyPoster(1)">
         Buy Poster:
-        $<span class="passion_cost"></span>
+        $<span class="poster_cost"></span>
       </button>
       
-      <button style="display:none" class="show_passion" onClick="upgradePassion(1)">
-        Buy Figurine:
-        $<span class="passion_cost"></span>
+      <button style="display:none" class="show_figure" onClick="buyFigure(1)">
+        Buy Figure:
+        $<span class="figure_cost"></span>
+      </button>
+	  
+	  <button style="display:none" class="show_pillow" onClick="buyPillow(1)">
+        Buy Body Pillow:
+        $<span class="pillow_cost"></span>
       </button>
       
       <button style="display:none" class="show_dogecoin_miner" onClick="hireDogecoinMiner(1)">
@@ -50,7 +54,8 @@
   <div id="textbox">
     <output type="text" id="id01" value="" />
   </div><!--end textbox-->
-
+  
+<button href="#!" class="click">Pull 1</button>
 <button href="#!" class="click">Pull 10</button>
 
 	<div id="pop">
