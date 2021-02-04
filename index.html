@@ -23,9 +23,19 @@
       </span>
     </div>
     <div class="column">
-      <button onClick="mineGold(1)">Work</button>
+      <div style="width: 200px;"> <button onClick="work(100)" class="cooldown">Work</button> </div>
+	  
+	  <script>
+		$('.cooldown').click(function(){
+			var btn = $(this);
+			btn.prop('disabled', true);
+			setTimeout(function(){
+			btn.prop('disabled', false);
+			},3000);
+		});
+	  </script>
       
-      <button style="display:none" class="show_poster" onClick="buyPoster(1)">
+      <button style="display:none" class="show_poster" onClick="buyPoster(0.5)">
         Buy Poster:
         $<span class="poster_cost"></span>
       </button>
@@ -35,7 +45,7 @@
         $<span class="figure_cost"></span>
       </button>
 	  
-	  <button style="display:none" class="show_pillow" onClick="buyPillow(1)">
+	  <button style="display:none" class="show_pillow" onClick="buyPillow(2)">
         Buy Body Pillow:
         $<span class="pillow_cost"></span>
       </button>
@@ -45,10 +55,12 @@
         $<span class="dogecoin_miner_cost"></span>
       </button>
       
+	  <!--
       <button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
         Upgrade DogeCoinMiners:
         $<span class="miner_pickaxe_cost"></span>
       </button>
+	  -->
     </div><!--end column-->
   </div><!--end row-->
   <div id="textbox">

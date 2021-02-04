@@ -23,16 +23,24 @@ var unlocks = {"poster":{"money":10},
 	       "dogecoin_miner":{"money":250},
 	       "miner_pickaxe":{"dogecoin_miner":1}}
 
-function mineGold(num){
+function work(num){
     resources["money"] += num*resources["passion"]
-    writeText("You worked.")
+	
+	var flavorText = Math.random()
+	
+	if(flavorText < 0.9) {
+		writeText("You worked.")
+	}
+	else {
+		writeText("You stare at your phone wallpaper. It's a picture of your waifu. Your boss gives you a confused look from a distance.")
+	}
     updateText()
 };
 
 function upgradeMinerPickaxe(num){
     if (resources["money"] >= costs["miner_pickaxe"]*num){
 	resources["miner_pickaxe"] += num
-	resources["money"] -= num*costs["miner_pickaxe"]
+	resources["money"] -= costs["miner_pickaxe"]
 	
 	costs["miner_pickaxe"] *= growthRate["miner_pickaxe"]
 	
@@ -41,9 +49,9 @@ function upgradeMinerPickaxe(num){
 };
 
 function buyPoster(num){
-    if (resources["money"] >= costs["poster"]*num){
+    if (resources["money"] >= costs["poster"]){
 	resources["passion"] += num
-	resources["money"] -= num*costs["poster"]
+	resources["money"] -= costs["poster"]
 	
 	costs["poster"] *= growthRate["poster"]
 	
@@ -53,9 +61,9 @@ function buyPoster(num){
 };
 
 function buyFigure(num){
-    if (resources["money"] >= costs["figure"]*num){
+    if (resources["money"] >= costs["figure"]){
 	resources["passion"] += num
-	resources["money"] -= num*costs["figure"]
+	resources["money"] -= costs["figure"]
 	
 	costs["figure"] *= growthRate["figure"]
 	
@@ -65,9 +73,9 @@ function buyFigure(num){
 };
 
 function buyPillow(num){
-    if (resources["money"] >= costs["pillow"]*num){
+    if (resources["money"] >= costs["pillow"]){
 	resources["passion"] += num
-	resources["money"] -= num*costs["pillow"]
+	resources["money"] -= costs["pillow"]
 	
 	costs["pillow"] *= growthRate["pillow"]
 	
@@ -130,7 +138,7 @@ window.setInterval(function(){
 
     
     for (var increment of increments){
-	total = 1
+	total = 0.5
 	for (var input of increment["input"]){
 	    total *= resources[input]
 	    

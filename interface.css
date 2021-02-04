@@ -1,6 +1,5 @@
 button {
-    background-color: #FFFFFF; 
-    border: none;
+    background-color: #FFFFFF;
     border: 1px solid black;
     color: black;
     padding: 15px 32px;
@@ -8,6 +7,25 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px; 
+	cursor: pointer;
+}
+
+$disableDuration: 3s;
+.cooldown{
+	border: 1px solid black;
+}
+
+.cooldown:disabled{
+    background: black;
+	border: 1px solid black;
+	width: 100px;
+    cursor: default;
+	animation: cooldown 3s linear;
+}
+
+@keyframes cooldown {
+   0% { width: 100px; }
+   100% { width: 0px; }
 }
 
 button:hover {
@@ -17,6 +35,8 @@ button:hover {
 button:active {
     background-color: #ececec; 
 }
+
+
 
 .column {
   float: left;
