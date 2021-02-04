@@ -55,24 +55,26 @@
         $<span class="dogecoin_miner_cost"></span>
       </button>
       
-	  <!--
-      <button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
-        Upgrade DogeCoinMiners:
-        $<span class="miner_pickaxe_cost"></span>
-      </button>
-	  -->
-    </div><!--end column-->
-  </div><!--end row-->
-  <div id="textbox">
-    <output type="text" id="id01" value="" />
-  </div><!--end textbox-->
+			<!--
+			<button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
+				Upgrade DogeCoinMiners:
+				$<span class="miner_pickaxe_cost"></span>
+			  </button>
+			-->
+		</div><!--end column-->
+	</div><!--end row-->
+	<div id="textbox">
+		<output type="text" id="id01" value="" />
+	</div><!--end textbox-->
   
-<button href="#!" class="click">Pull 1</button>
-<button href="#!" class="click">Pull 10</button>
-
-	<div id="pop">
-  	<div class="fade"></div>
-    <div class="popup">that was a terrible pull</div>
+	<button onClick="gachaPull()">Pull 1</button>
+	<button onClick="gachaTen()">Pull 10</button>
+	<div id="gacha-box">
+		<output type="text" id="id02" value="" />
+	</div><!--end gacha box-->
+	<div id="pulls">
+		<output tyle="text" id="pulls" value="" />
+	</div>
   </div>
 </body>
 </html>

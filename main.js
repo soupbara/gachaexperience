@@ -2,26 +2,28 @@ var timer = 256
 var tickRate = 16
 var visualRate = 256
 var resources = {"money":0,"passion":1}
-var costs = {"poster":20,
-		 "figure":100,
-		 "pillow":200,
-	     "dogecoin_miner":500,
-	     "miner_pickaxe":15}
+var costs = { "onePull":2,
+		"tenPull":20,
+		"poster":20,
+		"figure":100,
+		"pillow":200,
+	    "dogecoin_miner":500,
+	    "miner_pickaxe":15}
 		 
 var growthRate = {"poster":1.25,
-		 "figure":1.25,
-		 "pillow":1.25,
-		 "dogecoin_miner":1.25,
-	     "miner_pickaxe":1.75}
+		"figure":1.25,
+		"pillow":1.25,
+		"dogecoin_miner":1.25,
+	    "miner_pickaxe":1.75}
 
 var increments = [{"input":["dogecoin_miner","miner_pickaxe"],
 		   "output":"money"}]
 
 var unlocks = {"poster":{"money":10},
-		   "figure":{"money":50},
-		   "pillow":{"money":100},
-	       "dogecoin_miner":{"money":250},
-	       "miner_pickaxe":{"dogecoin_miner":1}}
+		"figure":{"money":50},
+		"pillow":{"money":100},
+	    "dogecoin_miner":{"money":250},
+	    "miner_pickaxe":{"dogecoin_miner":1}}
 
 function work(num){
     resources["money"] += num*resources["passion"]
@@ -50,13 +52,13 @@ function upgradeMinerPickaxe(num){
 
 function buyPoster(num){
     if (resources["money"] >= costs["poster"]){
-	resources["passion"] += num
-	resources["money"] -= costs["poster"]
-	
-	costs["poster"] *= growthRate["poster"]
-	
-  writeText("You bought a poster. You feel a sense of accomplishment.")
-	updateText()
+		resources["passion"] += num
+		resources["money"] -= costs["poster"]
+		
+		costs["poster"] *= growthRate["poster"]
+		
+		writeText("You bought a poster. You feel a sense of accomplishment.")
+		updateText()
     }
 };
 
@@ -74,13 +76,13 @@ function buyFigure(num){
 
 function buyPillow(num){
     if (resources["money"] >= costs["pillow"]){
-	resources["passion"] += num
-	resources["money"] -= costs["pillow"]
-	
-	costs["pillow"] *= growthRate["pillow"]
-	
-  writeText("You bought a body pillow. There's no turning back.")
-	updateText()
+		resources["passion"] += num
+		resources["money"] -= costs["pillow"]
+		
+		costs["pillow"] *= growthRate["pillow"]
+		
+		writeText("You bought a body pillow. There's no turning back.")
+		updateText()
     }
 };
 
@@ -106,6 +108,10 @@ function hireDogecoinMiner(num){
 function writeText(text){
 	document.getElementById('id01').value = text
 } //note, make it so that the text is line by line
+
+function writeTextTwo(text){
+	document.getElementById('id02').value += text
+} 
 
 function updateText(){
     for (var key in unlocks){
@@ -138,15 +144,15 @@ window.setInterval(function(){
 
     
     for (var increment of increments){
-	total = 0.5
-	for (var input of increment["input"]){
-	    total *= resources[input]
-	    
-	}
-	if (total){
-	    console.log(total)
-	    resources[increment["output"]] += total/tickRate
-	}
+		total = 0.5
+		for (var input of increment["input"]){
+			total *= resources[input]
+			
+		}
+		if (total){
+			console.log(total)
+			resources[increment["output"]] += total/tickRate
+		}
     }
     
     if (timer > visualRate){
@@ -158,23 +164,73 @@ window.setInterval(function(){
 }, tickRate);
 
 //gacha mechanic
-var rate = Math.random();
+var totalPulls = [0, 0, 0, 0, 0]
+
 function gachaPull() {
-	if (rate < 0.5) {
-  	 //50% chance of being 1 star
-    }
-  else if (rate < 0.8) {
-  	// 30% chance of being 2 star
+	if (resources["money"] >= costs["onePull"]){
+		resources["money"] -= costs["onePull"]
+		var rate = Math.random();
+		if (rate < 0.5) {
+			writeTextTwo("1* ")
+			totalPulls[0]++
+		}
+		else if (rate < 0.9) {
+			writeTextTwo("2* ")
+			totalPulls[1]++
+		}
+		else if (rate < 0.97) {
+			writeTextTwo("3* ")
+			totalPulls[2]++
+		}
+		else if (rate < 0.99) {
+			writeTextTwo("4* ")
+			totalPulls[3]++
+		}
+		else {
+			writeTextTwo("5* ")
+			totalPulls[4]++
+		}
 	}
-	else if (rate < 0.95) {
-  	// 15% chance of being 3 star
+	else {
+		writeText("You don't have enough money.")
 	}
-  else if (rate < 0.99) {
-  	// 4% chance of being 4 star
+	document.getElementById("pulls").value = totalPulls.toString()
+	updateText()
+};
+
+function gachaTen() {
+	if (resources["money"] >= costs["tenPull"]){
+		resources["money"] -= costs["tenPull"]
+		var i;
+		for (i = 0; i < 10; i++) {
+			var rate = Math.random();
+			if (rate < 0.5) {
+				writeTextTwo("1* ")
+				totalPulls[0]++
+			}
+			else if (rate < 0.8) {
+				writeTextTwo("2* ")
+				totalPulls[1]++
+			}
+			else if (rate < 0.95) {
+				writeTextTwo("3* ")
+				totalPulls[2]++
+			}
+			else if (rate < 0.99) {
+				writeTextTwo("4* ")
+				totalPulls[3]++
+			}
+			else {
+				writeTextTwo("5* ")
+				totalPulls[4]++
+			}
+		}
 	}
-  else {
-  	// 1% chance of being 5 star
+	else {
+		writeText("You don't have enough money.")
 	}
+	document.getElementById("pulls").value = totalPulls.toString()
+	updateText()
 };
 
 //popup box for gacha
