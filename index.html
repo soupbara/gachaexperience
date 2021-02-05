@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="interface.css" />
-  <title>The Gacha Experience</title>
+	<link rel="stylesheet" type="text/css" href="interface.css" />
+	<title>The Gacha Experience</title>
 </head>
+
 <body>
-  <script type="text/javascript" src="main.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <div class="row">
-    <div class="column">
-      Money: $<span class="money"></span>
-      <p> Passion: <span class="passion"></span> </p>  
-	  
-	  <span style="display:none" class="show_dogecoin_miner">
-        Amount of DogeCoin:
-        <span class="dogecoin_miner"></span>
-      </span>
-	  
-      <span style="display:none" class="show_dogecoin_miner_pickaxe">
-        Miner Pickaxe Level:
-        <span class="miner_pickaxe"></span>
-      </span>
-    </div>
-    <div class="column">
-      <button onClick="work(10)" class="cooldown animation">Work</button>
+
+<script type="text/javascript" src="main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<div id="header">
+	<center>
+		<button class="tablinks" onclick="openPage(event, 'mainPage')">Work</button>
+		<button class="tablinks" onclick="openPage(event, 'store')">Go to the store</button>
+		<button class="tablinks" onclick="openPage(event, 'gachaPage')">Open your Gacha Game</button>
+	</center>
+	
+	<div id="statistics">
+		Money: $<span class="money"></span>
+		<p>Passion: <span class="passion"></span></p>  
+		  
+		<span style="display:none" class="show_dogecoin_miner">
+			Amount of DogeCoin:
+			<span class="dogecoin_miner"></span>
+		</span>
+	</div>
+
+	<div id="textbox">
+		<output type="text" id="id01" value="" />
+	</div><!--end textbox-->
+
+</div><!--end header-->
+
+<div id="introduction" class="tabcontent">
+	The sound of the alarm is blaring in your ears as you wake up.<br />
+	The room is still dark, your blinds closed shut. You warily rub your eyes.<br />
+	It's time to go to work.
+</div>
+
+<div id="mainPage" class="tabcontent">
+
+      <center><button onClick="work(10)" class="cooldown animation">Work</button></center>
 	  
 	  <script>
 		$('.cooldown').click(function(){
@@ -34,52 +52,69 @@
 			},1999);
 		});
 	  </script>
+</div>
+
+<div id="store" style="display:none" class="show_poster tabcontent">
+	<button style="display:none" class="show_poster" onClick="buyPoster(0.5)">
+		Buy Poster:
+		$<span class="poster_cost"></span>
+    </button>
       
-      <button style="display:none" class="show_poster" onClick="buyPoster(0.5)">
-        Buy Poster:
-        $<span class="poster_cost"></span>
-      </button>
-      
-      <button style="display:none" class="show_figure" onClick="buyFigure(1)">
+    <button style="display:none" class="show_figure" onClick="buyFigure(1)">
         Buy Figure:
         $<span class="figure_cost"></span>
-      </button>
+    </button>
 	  
-	  <button style="display:none" class="show_pillow" onClick="buyPillow(2)">
+	<button style="display:none" class="show_pillow" onClick="buyPillow(2)">
         Buy Body Pillow:
         $<span class="pillow_cost"></span>
-      </button>
+    </button>
       
-      <button style="display:none" class="show_dogecoin_miner" onClick="buyDogeCoin(1)">
+    <button style="display:none" class="show_dogecoin_miner" onClick="buyDogeCoin(1)">
         Purchase DogeCoin:
         $<span class="dogecoin_miner_cost"></span>
-      </button>
+	</button>
+</div>
 
-		</div><!--end column-->
-	</div><!--end row-->
-	<div id="textbox">
-		<output type="text" id="id01" value="" />
-	</div><!--end textbox-->
-  
-	<button onClick="gachaPull()">
-		Pull 1: 
-		$<span class="onePull_cost"></span>
-	</button>
-	<button onClick="gachaTen()">
-		Pull 10: 
-		$<span class="tenPull_cost"></span>
-	</button>
+<div id="gachaPage" class="tabcontent">
+	<center>
+		<button onClick="gachaPull()">
+			Pull 1: 
+			$<span class="onePull_cost"></span>
+		</button>
+		<button onClick="gachaTen()">
+			Pull 10: 
+			$<span class="tenPull_cost"></span>
+		</button>
+	</center>
 	<div id="gacha-box">
 		<output type="text" id="id02" value="" />
 	</div><!--end gacha box-->
 	<div id="pulls">
 		<output type="text" id="id03" value="" />
 	</div>
-  
+</div>
   
   
 <div style="display:none;" class="show_ending" id="fade">
 	Lorem Ispum
 </div>
+
+<!--javascript for the separate tabs-->
+<script type="text/javascript">
+	function openPage(evt, tab) {
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+	for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	}
+	tablinks = document.getElementsByClassName("tablinks");
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	}
+		document.getElementById(tab).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+</script>
 </body>
 </html>
