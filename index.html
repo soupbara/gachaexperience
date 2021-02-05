@@ -9,11 +9,11 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <div class="row">
     <div class="column">
-      Money: <span class="money"></span>
+      Money: $<span class="money"></span>
       <p> Passion: <span class="passion"></span> </p>  
 	  
 	  <span style="display:none" class="show_dogecoin_miner">
-        Miners:
+        Amount of DogeCoin:
         <span class="dogecoin_miner"></span>
       </span>
 	  
@@ -23,7 +23,7 @@
       </span>
     </div>
     <div class="column">
-      <div style="width: 200px;"> <button onClick="work(100)" class="cooldown">Work</button> </div>
+      <button onClick="work(10)" class="cooldown animation">Work</button>
 	  
 	  <script>
 		$('.cooldown').click(function(){
@@ -31,7 +31,7 @@
 			btn.prop('disabled', true);
 			setTimeout(function(){
 			btn.prop('disabled', false);
-			},3000);
+			},1999);
 		});
 	  </script>
       
@@ -50,31 +50,36 @@
         $<span class="pillow_cost"></span>
       </button>
       
-      <button style="display:none" class="show_dogecoin_miner" onClick="hireDogecoinMiner(1)">
-        Hire DogeCoin Miners:
+      <button style="display:none" class="show_dogecoin_miner" onClick="buyDogeCoin(1)">
+        Purchase DogeCoin:
         $<span class="dogecoin_miner_cost"></span>
       </button>
-      
-			<!--
-			<button style="display:none" class="show_dogecoin_miner" onClick="upgradeMinerPassion(1)">
-				Upgrade DogeCoinMiners:
-				$<span class="miner_pickaxe_cost"></span>
-			  </button>
-			-->
+
 		</div><!--end column-->
 	</div><!--end row-->
 	<div id="textbox">
 		<output type="text" id="id01" value="" />
 	</div><!--end textbox-->
   
-	<button onClick="gachaPull()">Pull 1</button>
-	<button onClick="gachaTen()">Pull 10</button>
+	<button onClick="gachaPull()">
+		Pull 1: 
+		$<span class="onePull_cost"></span>
+	</button>
+	<button onClick="gachaTen()">
+		Pull 10: 
+		$<span class="tenPull_cost"></span>
+	</button>
 	<div id="gacha-box">
 		<output type="text" id="id02" value="" />
 	</div><!--end gacha box-->
 	<div id="pulls">
-		<output tyle="text" id="pulls" value="" />
+		<output type="text" id="id03" value="" />
 	</div>
-  </div>
+  
+  
+  
+<div style="display:none;" class="show_ending" id="fade">
+	Lorem Ispum
+</div>
 </body>
 </html>
