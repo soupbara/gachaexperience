@@ -12,8 +12,7 @@
 
 <div id="header">
 	<center>
-		<button class="tablinks" onclick="openPage(event, 'mainPage')">Work</button>
-		<button class="tablinks" onclick="openPage(event, 'store')">Go to the store</button>
+		<button class="tablinks" onclick="openPage(event, 'mainPage')">Go Outside</button>
 		<button class="tablinks" onclick="openPage(event, 'gachaPage')">Open your Gacha Game</button>
 	</center>
 	
@@ -36,12 +35,14 @@
 <div id="introduction" class="tabcontent">
 	The sound of the alarm is blaring in your ears as you wake up.<br />
 	The room is still dark, your blinds closed shut. You warily rub your eyes.<br />
-	It's time to go to work.
+	You stayed up all night playing a new gacha game a coworker introduced you too. You found a new calling in life.<br />
+	You have a new <strong>waifu</strong>. But here's the thing: she's a 5 star.<br />
+	<h3>It's time to go to work.</h3>
 </div>
 
 <div id="mainPage" class="tabcontent">
 
-      <center><button onClick="work(10)" class="cooldown animation">Work</button></center>
+      <center><button onClick="work(10)" class="cooldown animation">Work</button>
 	  
 	  <script>
 		$('.cooldown').click(function(){
@@ -52,9 +53,9 @@
 			},1999);
 		});
 	  </script>
-</div>
-
-<div id="store" style="display:none" class="show_poster tabcontent">
+	  
+	  
+	<h1 align="center">Store:</h1>
 	<button style="display:none" class="show_poster" onClick="buyPoster(0.5)">
 		Buy Poster:
 		$<span class="poster_cost"></span>
@@ -74,6 +75,8 @@
         Purchase DogeCoin:
         $<span class="dogecoin_miner_cost"></span>
 	</button>
+	
+	</center>
 </div>
 
 <div id="gachaPage" class="tabcontent">

@@ -1,3 +1,7 @@
+body {
+	font: 1em Times New Roman;
+}
+
 button {
     background-color: #FFFFFF;
     border: 1px solid black;
@@ -8,6 +12,8 @@ button {
     display: inline-block;
     font-size: 16px; 
 	cursor: pointer;
+	margin: 10px;
+	font-family: Times New Roman;
 }
 
 .cooldown{
