@@ -140,6 +140,18 @@ function writeTextThree(text){
 	document.getElementById('id03').value = text
 } 
 
+function theEnd(){
+    if(totalPulls["five"] >= 1){
+		writeText("You really spent all that money?")
+        //var element = document.getElementsByClassName("show_ending")
+        //element.style.display = "block"
+        //element.innterHTML = totalPulls["five"].toFixed(2)
+    }
+    else{
+        writeText("You cannot rest until you get a five star.")
+    }
+}
+
 function updateText(){
     for (var key in unlocks){
 		var unlocked = true
