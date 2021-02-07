@@ -69,7 +69,7 @@ function buyPoster(num){
 		
 		costs["poster"] *= growthRate["poster"]
 		
-		writeText("You bought a poster. You feel a sense of accomplishment.")
+		writeText("You bought a poster. You feel a slight spark of passion.\n\n+0.5 Passion")
     }
 	else {
 		writeText("You don't have enough money.")
@@ -84,7 +84,7 @@ function buyFigure(num){
 		
 		costs["figure"] *= growthRate["figure"]
 		
-		writeText("You bought an anime figure. You feel a burning passion from within.")
+		writeText("You bought an anime figure. You feel a burning passion from within.\n\n+1.0 Passion")
     }
 	else {
 		writeText("You don't have enough money.")
@@ -99,7 +99,7 @@ function buyPillow(num){
 		
 		costs["pillow"] *= growthRate["pillow"]
 		
-		writeText("You bought a body pillow. There's no turning back.")
+		writeText("You bought a body pillow. Your passion passes the point of no return.\n\n+2.0 Passion")
     }
 	else {
 		writeText("You don't have enough money.")
