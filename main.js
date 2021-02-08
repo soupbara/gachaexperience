@@ -216,9 +216,6 @@ function gachaPull() {
 		if (rate < 0.5) {
 			writeTextTwo("1*\n")
 			totalPulls["one"]++
-			if (rate < 0.25) {
-				writeText("You're getting tired of seeing 1 stars.")
-			}
 		}
 		else if (rate < 0.9) {
 			writeTextTwo("2*\n")
