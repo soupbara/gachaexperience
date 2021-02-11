@@ -68,6 +68,12 @@ button:active {
 	white-space: pre-line;
 }
 
+#store {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
 #gacha-box {
 	max-height: 100px;
 	overflow: hidden;
@@ -133,7 +139,7 @@ button:active {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
