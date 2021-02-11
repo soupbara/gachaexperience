@@ -1,5 +1,5 @@
 var timer = 256
-var tickRate = 16
+var tickRate = 32
 var visualRate = 256
 var resources = {"money":0,"passion":1}
 var costs = { "onePull":2,
@@ -20,8 +20,8 @@ var growthRate = {"poster":1.25,
 		"pillow":1.25,
 		"dogecoin_miner":1.25,
 	    "miner_pickaxe":1.75,
-		"onePull":1.01,
-		"tenPull":1.01}
+		"onePull":1,
+		"tenPull":1}
 
 var increments = [{"input":["dogecoin_miner"],
 		   "output":"money"}]
@@ -29,7 +29,7 @@ var increments = [{"input":["dogecoin_miner"],
 var unlocks = {"poster":{"money":10},
 		"figure":{"money":50},
 		"pillow":{"money":150},
-	    "dogecoin_miner":{"money":250},
+	    "dogecoin_miner":{"money":200},
 	    "miner_pickaxe":{"dogecoin_miner":1},
 		"ending":{"five":1}}
 
@@ -290,10 +290,3 @@ function gachaTen() {
 		"\n 5* = " + totalPulls["five"]);
 	updateText()
 };
-
-//popup box for gacha
-$(document).ready(function() {
-	$('.click, .fade').click(function(){
-  	$('#pop').fadeToggle();
-  });
-});
