@@ -1,6 +1,8 @@
 body {
 	background: white;
-	font: 1em Times New Roman;
+	font: 1em 'Poppins', sans-serif;
+	padding: 0; margin: 0;
+	overflow-x: hidden;
 }
 
 button {
@@ -14,7 +16,6 @@ button {
     font-size: 16px; 
 	cursor: pointer;
 	margin: 10px;
-	font-family: Times New Roman;
 }
 
 .cooldown{
@@ -78,7 +79,7 @@ button:active {
 }
 
 #header {
-	margin-top: 120px;
+	margin-top: 150px;
 	width: 100%;
 }
 
@@ -96,10 +97,9 @@ button:active {
 	padding: 10px;
 	border: 1px solid black;
 	border-top: none;
-	border-right: none;
 	top: 0;
-	right: 0;
 	position: absolute;
+	text-align: center;
 }
 
 .box {

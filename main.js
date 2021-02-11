@@ -141,15 +141,19 @@ function writeTextThree(text){
 } 
 
 function theEnd(){
-    if(totalPulls["five"] >= 1){
-		writeText("You really spent all that money?")
+    if(totalPulls["five"] < 1){
+		writeText("You cannot rest until you get a five star.")
+		
         //var element = document.getElementsByClassName("show_ending")
         //element.style.display = "block"
         //element.innterHTML = totalPulls["five"].toFixed(2)
     }
-    else{
-        writeText("You cannot rest until you get a five star.")
+    else if (totalPulls["five"] < 2){
+        writeText("You want to upgrade your waifu. You must get a second five star.")
     }
+	else {
+		writeText("You really spent all that money?")
+	}
 	updateText()
 }
 
