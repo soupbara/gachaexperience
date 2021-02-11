@@ -13,24 +13,28 @@
 <script src="https://kit.fontawesome.com/fb25db8e8c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<div id="header">
-	<center>
-		<button class="tablinks" onclick="openPage(event, 'mainPage')">Go To Work</button>
-		<button class="tablinks" onclick="openPage(event, 'gachaPage')">Open your Gacha Game</button>
-	</center>
-	
-	<div id="statistics">
-		Money: $<span class="money"></span>
-		<p>Passion: <span class="passion"></span></p>  
-		  
-		<span style="display:none" class="show_dogecoin_miner">
-			Amount of DogeCoin:
-			<span class="dogecoin_miner"></span>
-		</span>
-	</div>
+<div id="statistics">
+	Money: $<span class="money"></span>
+	<p>Passion: <span class="passion"></span></p>  
+	  
+	<span style="display:none" class="show_dogecoin_miner">
+		Amount of DogeCoin:
+		<span class="dogecoin_miner"></span>
+	</span>
+</div>
 
-	<div id="textbox">
-		<output type="text" id="id01" value="" />
+<div id="header">
+	
+	<div class="row d-flex justify-content-center">
+		<button class="tablinks" onclick="openPage(event, 'mainPage')">Go to Work</button>&nbsp;&nbsp;
+		<button class="tablinks" onclick="openPage(event, 'store')">Go to the Store</button>&nbsp;&nbsp;
+		<button class="tablinks show_poster" onclick="openPage(event, 'gachaPage')" style="display: none;">Open your Gacha Game</button>
+	</div>
+	
+	<div class="row d-flex justify-content-center">
+		<div id="textbox" >
+			<output type="text" id="id01" value="" />
+		</div>
 	</div><!--end textbox-->
 
 </div><!--end header-->
@@ -45,22 +49,27 @@
 
 
 <div id="mainPage" class="tabcontent">
+	
+	<center>
+		<button onClick="work(10)" class="cooldown animation">Work</button>
+		  
+		<script>
+			$('.cooldown').click(function(){
+				var btn = $(this);
+				btn.prop('disabled', true);
+				setTimeout(function(){
+				btn.prop('disabled', false);
+				},1999);
+			});
+		</script>
+		<br /><br />
+		<button onClick="theEnd()" class="cooldown animation">Do you want to rest?</button>
+	</center>
+</div>
 
-      <center><button onClick="work(10)" class="cooldown animation">Work</button>
-	  
-	  <script>
-		$('.cooldown').click(function(){
-			var btn = $(this);
-			btn.prop('disabled', true);
-			setTimeout(function(){
-			btn.prop('disabled', false);
-			},1999);
-		});
-	  </script>
-	  
-	  <center><button onClick="theEnd()" class="cooldown animation">Do you want to rest?</button>
-	  
-	<h1 align="center">Store:</h1>
+<div id="store" class="tabcontent">
+	<center>
+	
 	<button style="display:none" class="show_poster" onClick="buyPoster(0.5)">
 		Buy Poster:
 		$<span class="poster_cost"></span>
@@ -85,29 +94,33 @@
 </div>
 
 <div id="gachaPage" class="tabcontent">
-	<center>
+
+	<div class="row d-flex justify-content-center">
 		<a href="#popup1"><button onClick="gachaPull()">
 			Pull 1: 
 			$<span class="onePull_cost"></span>
-		</button></a>
+		</button></a>&nbsp;&nbsp;
 		<a href="#popup1"><button onClick="gachaTen()">
 			Pull 10: 
 			$<span class="tenPull_cost"></span>
 		</button></a>
-	</center>
-	
-	<div id="pulls">
-		<output type="text" id="id03" value="" />
 	</div>
 	
-	<div id="popup1" class="overlay">
-		<div class="popup">
-			<a class="close" href="#">&times;</a>
-			<div class="content">
-				<output type="text" id="id02" value="" />
+	<div class="row d-flex justify-content-center">
+		<div id="pulls">
+			<output type="text" id="id03" value="" />
+		</div>
+		
+		<div id="popup1" class="overlay">
+			<div class="popup">
+				<a class="close" href="#">&times;</a>
+				<div class="content">
+					<output type="text" id="id02" value="" />
+				</div>
 			</div>
 		</div>
 	</div>
+	
 </div>
   
 <div style="display:none;" class="show_ending" id="fade">

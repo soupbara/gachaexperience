@@ -150,6 +150,7 @@ function theEnd(){
     else{
         writeText("You cannot rest until you get a five star.")
     }
+	updateText()
 }
 
 function updateText(){
@@ -157,7 +158,7 @@ function updateText(){
 		var unlocked = true
 		for (var criterion in unlocks[key]){
 			unlocked = unlocked && resources[criterion] >= unlocks[key][criterion]
-			unlocks["ending"].unlocked = unlocked && totalPulls["five"] >= 1
+			unlocks["ending"].unlocked = unlocked && totalPulls["five"] >= 5
 		}
 		if (unlocked){
 			for (var element of document.getElementsByClassName("show_"+key)){		
@@ -207,6 +208,8 @@ window.setInterval(function(){
 //gacha mechanic
 
 function gachaPull() {
+	document.getElementById('id02').value = ""
+	
 	if (resources["money"] >= costs["onePull"]){
 		resources["money"] -= costs["onePull"]
 		costs["onePull"] *= growthRate["onePull"]
@@ -232,8 +235,8 @@ function gachaPull() {
 		else {
 			writeTextTwo("5*\n")
 			totalPulls["five"]++
-			writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.")
-			resources["passion"] += 2
+			writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.\n\n+0.1 Passion")
+			resources["passion"] += 1
 		}
 	}
 	else {
@@ -248,6 +251,8 @@ function gachaPull() {
 };
 
 function gachaTen() {
+	document.getElementById('id02').value = ""
+	
 	if (resources["money"] >= costs["tenPull"]){
 		resources["money"] -= costs["tenPull"]
 		costs["tenPull"] *= growthRate["tenPull"]
@@ -274,9 +279,9 @@ function gachaTen() {
 			}
 			else {
 				writeTextTwo("5* ")
-				document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen.  Your passion burns all the brighter."
+				document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter. \n\n+0.1 Passion"
 				totalPulls["five"]++
-				resources["passion"] += 2
+				resources["passion"] += 1
 			}
 		}
 	}
