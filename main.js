@@ -20,16 +20,16 @@ var growthRate = {"poster":1.25,
 		"pillow":1.25,
 		"dogecoin_miner":1.25,
 	    "miner_pickaxe":1.75,
-		"onePull":1,
-		"tenPull":1}
+		"onePull":1.10,
+		"tenPull":1.10}
 
 var increments = [{"input":["dogecoin_miner"],
 		   "output":"money"}]
 
 var unlocks = {"poster":{"money":20},
-		"figure":{"money":50},
-		"pillow":{"money":150},
-	    "dogecoin_miner":{"money":200},
+		"figure":{"money":40},
+		"pillow":{"money":100},
+	    "dogecoin_miner":{"money":150},
 	    "miner_pickaxe":{"dogecoin_miner":1},
 		"ending":{"five":1}}
 
