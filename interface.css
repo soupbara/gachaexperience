@@ -144,12 +144,13 @@ button:active {
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 0 auto;
+  margin-top: 25%;
   padding: 20px;
   background: #fff;
-  border-radius: 5px;
   width: 30%;
   position: relative;
+  border: 1px solid black;
   transition: all 5s ease-in-out;
 }
 
@@ -169,7 +170,7 @@ button:active {
   color: #333;
 }
 .popup .close:hover {
-  color: #06D85F;
+  color: lightgray;
 }
 .popup .content {
   max-height: 30%;

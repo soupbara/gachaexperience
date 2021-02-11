@@ -26,7 +26,7 @@ var growthRate = {"poster":1.25,
 var increments = [{"input":["dogecoin_miner"],
 		   "output":"money"}]
 
-var unlocks = {"poster":{"money":10},
+var unlocks = {"poster":{"money":20},
 		"figure":{"money":50},
 		"pillow":{"money":150},
 	    "dogecoin_miner":{"money":200},
@@ -235,7 +235,7 @@ function gachaPull() {
 		else {
 			writeTextTwo("5*\n")
 			totalPulls["five"]++
-			writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.\n\n+0.1 Passion")
+			writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.\n\n+1 Passion")
 			resources["passion"] += 1
 		}
 	}
@@ -279,7 +279,7 @@ function gachaTen() {
 			}
 			else {
 				writeTextTwo("5* ")
-				document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter. \n\n+0.1 Passion"
+				document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter. \n\n+1 Passion"
 				totalPulls["five"]++
 				resources["passion"] += 1
 			}
