@@ -1,6 +1,7 @@
 var timer = 256
 var tickRate = 32
 var visualRate = 256
+var end = 0
 var resources = {"money":0,"passion":1}
 var costs = { "onePull":2,
 		"tenPull":20,
@@ -34,79 +35,131 @@ var unlocks = {"poster":{"money":20},
 		"ending":{"five":1}}
 
 function work(num){
-    resources["money"] += num*resources["passion"]
+	if(end < 1) {
+		resources["money"] += num*resources["passion"]
 	
-	var flavorText = Math.random()
-	
-	if(flavorText < 0.88) {
-		writeText("You worked.")
-	}
-	else if(flavorText < 0.90) {
-		writeText("It's not an addiction. You can stop at any time. You just choose not to.")
-	}
-	else if(flavorText < 0.92) {
-		writeText("You stare at your phone wallpaper. It's a picture of your waifu. Your boss gives you a confused look from a distance.")
-	}
-	else if(flavorText < 0.94) {
-		writeText("Every day blends into each other. The only way you keep track of dates now is when the next event comes out.")
-	}
-	else if(flavorText < 0.96) {
-		writeText("Your coworkers invite you out to a social. You decline; you have better things to do tonight.")
-	}
-	else if(flavorText < 0.98) {
-		writeText("Your back and eyes hurt.")
+		var flavorText = Math.random()
+		
+		if(flavorText < 0.88) {
+			writeText("You worked.\n\n+$" + num*resources["passion"])
+		}
+		else if(flavorText < 0.90) {
+			writeText("It's not an addiction. You can stop at any time. You just choose not to.\n\n+$" + num*resources["passion"])
+		}
+		else if(flavorText < 0.92) {
+			writeText("You stare at your phone wallpaper. It's a picture of your waifu. Your boss gives you a confused look from a distance.\n\n+$" + num*resources["passion"])
+		}
+		else if(flavorText < 0.94) {
+			writeText("Every day blends into each other. The only way you keep track of dates now is when the next event comes out.\n\n+$" + num*resources["passion"])
+		}
+		else if(flavorText < 0.96) {
+			writeText("Your coworkers invite you out to a social. You decline; you have better things to do tonight.\n\n+$" + num*resources["passion"])
+		}
+		else if(flavorText < 0.98) {
+			writeText("Your back and eyes hurt.\n\n+$" + num*resources["passion"])
+		}
+		else {
+			writeText("Sometimes, you think about life before you installed your favorite game. You don't remember much at all.\n\n+$" + num*resources["passion"])
+		}
 	}
 	else {
-		writeText("Sometimes, you think about life before you installed your favorite game. You don't remember much at all.")
+		resources["money"] += 10
+		writeText("You worked, but there's nothing to work toward to anymore.\n\n+$10")
 	}
     updateText()
 };
 
 function buyPoster(num){
-    if (resources["money"] >= costs["poster"]){
-		resources["passion"] += num
-		resources["money"] -= costs["poster"]
-		
-		costs["poster"] *= growthRate["poster"]
-		
-		writeText("You bought a poster. You feel a slight spark of passion.\n\n+0.5 Passion")
-    }
+	if(end < 1) {
+		if (resources["money"] >= costs["poster"]){
+			resources["passion"] += num
+			resources["money"] -= costs["poster"]
+			
+			costs["poster"] *= growthRate["poster"]
+			
+			writeText("You bought a poster. You feel a slight spark of passion.\n\nYou feel like you can work harder.\n\n+0.5 Passion")
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
+	}
 	else {
-		writeText("You don't have enough money.")
+		if (resources["money"] >= costs["poster"]){
+			resources["passion"] += 0
+			resources["money"] -= costs["poster"]
+			
+			costs["poster"] *= growthRate["poster"]
+			
+			writeText("You bought a poster, but feel nothing.\n\n+0.0 Passion")
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
 	}
 	updateText()
 };
 
 function buyFigure(num){
-    if (resources["money"] >= costs["figure"]){
-		resources["passion"] += num
-		resources["money"] -= costs["figure"]
-		
-		costs["figure"] *= growthRate["figure"]
-		
-		writeText("You bought an anime figure. You feel a burning passion from within.\n\n+1.0 Passion")
-    }
+	if(end < 1) {
+		if (resources["money"] >= costs["figure"]){
+			resources["passion"] += num
+			resources["money"] -= costs["figure"]
+			
+			costs["figure"] *= growthRate["figure"]
+			
+			writeText("You bought an anime figure. You feel a burning passion from within.\n\nYou feel like you can work harder.\n\n+1.0 Passion")
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
+	}
 	else {
-		writeText("You don't have enough money.")
+		if (resources["money"] >= costs["figure"]){
+			resources["passion"] += 0
+			resources["money"] -= costs["figure"]
+			
+			costs["figure"] *= growthRate["figure"]
+			
+			writeText("You bought an anime figure, but it feels more like a paperweight.\n\n+0.0 Passion")
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
 	}
 	updateText()
 };
 
 function buyPillow(num){
-    if (resources["money"] >= costs["pillow"]){
-		resources["passion"] += num
-		resources["money"] -= costs["pillow"]
-		
-		costs["pillow"] *= growthRate["pillow"]
-		
-		writeText("You bought a body pillow. Your passion passes the point of no return.\n\n+2.0 Passion")
-    }
+	if(end < 1) {
+		if (resources["money"] >= costs["pillow"]){
+			resources["passion"] += num
+			resources["money"] -= costs["pillow"]
+			
+			costs["pillow"] *= growthRate["pillow"]
+			
+			writeText("You bought a body pillow. Your passion passes the point of no return.\n\nYou feel like you can work harder.\n\n+2.0 Passion")	
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
+	}
 	else {
-		writeText("You don't have enough money.")
+		if (resources["money"] >= costs["pillow"]){
+			resources["passion"] += 0
+			resources["money"] -= costs["pillow"]
+			
+			costs["pillow"] *= growthRate["pillow"]
+			
+			writeText("You bought a body pillow, but is there really a point now?\n\n+0.0 Passion")
+		}
+		else {
+			writeText("You don't have enough money.")
+		}
 	}
 	updateText()
 };
 
+/*
 function buyDogeCoin(num){
     if (resources["money"] >= costs["dogecoin_miner"]*num){
 		if (!resources["dogecoin_miner"]){
@@ -127,6 +180,7 @@ function buyDogeCoin(num){
 	}
 	updateText()
 };
+*/
 
 function writeText(text){
 	document.getElementById('id01').value = text
@@ -143,7 +197,6 @@ function writeTextThree(text){
 function theEnd(){
     if(totalPulls["five"] < 1){
 		writeText("You cannot rest until you get a five star.")
-		
         //var element = document.getElementsByClassName("show_ending")
         //element.style.display = "block"
         //element.innterHTML = totalPulls["five"].toFixed(2)
@@ -152,7 +205,9 @@ function theEnd(){
         writeText("You want to upgrade your waifu. You must get a second five star.")
     }
 	else {
-		writeText("You really spent all that money?")
+		end++
+		resources["passion"] = 0
+		writeText("You really spent all that money?\n\nYou lose your passion.")
 	}
 	updateText()
 }
@@ -217,7 +272,12 @@ function gachaPull() {
 	if (resources["money"] >= costs["onePull"]){
 		resources["money"] -= costs["onePull"]
 		costs["onePull"] *= growthRate["onePull"]
-		writeText("You decide to do a single pull in the current event.")
+		if(end < 1) {
+			writeText("You decide to do a single pull in the current event.")
+		}
+		else {
+			writeText("You decide to do a single pull in the current event, but what's the point now?")
+		}
 		
 		var rate = Math.random();
 		if (rate < 0.5) {
@@ -239,8 +299,13 @@ function gachaPull() {
 		else {
 			writeTextTwo("5*\n")
 			totalPulls["five"]++
-			writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.\n\n+1 Passion")
-			resources["passion"] += 1
+			if(end < 1) {
+				writeText("Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter.\n\n+1 Passion")
+				resources["passion"] += 1
+			}
+			else {
+				writeText("Getting a five star doesn't feel the same.\n\n+0 Passion")
+			}
 		}
 	}
 	else {
@@ -260,7 +325,12 @@ function gachaTen() {
 	if (resources["money"] >= costs["tenPull"]){
 		resources["money"] -= costs["tenPull"]
 		costs["tenPull"] *= growthRate["tenPull"]
-		writeText("You decided to do a 10-pull in the current event.")
+		if(end < 1) {
+			writeText("You decided to do a 10-pull in the current event.")
+		}
+		else {
+			writeText("You decide to do a 10-pull in the current event, but what's the point now?")
+		}
 		var i;
 		writeTextTwo("\n")
 		for (i = 0; i < 10; i++) {
@@ -283,9 +353,16 @@ function gachaTen() {
 			}
 			else {
 				writeTextTwo("5* ")
-				document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter. \n\n+1 Passion"
 				totalPulls["five"]++
-				resources["passion"] += 1
+				
+				if(end < 1) {
+					document.getElementById('id01').value += " Your eyes light up at the 5 star unit on your phone screen. Your passion burns all the brighter. \n\n+1 Passion"
+					resources["passion"] += 1
+				}
+				else {
+					document.getElementById('id01').value += " Getting a five star doesn't feel the same.\n\n+0 Passion"
+					resources["passion"] += 0
+				}
 			}
 		}
 	}
