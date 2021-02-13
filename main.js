@@ -64,7 +64,7 @@ function work(num){
 	}
 	else {
 		resources["money"] += 10
-		writeText("You worked, but there's nothing to work toward to anymore.\n\n+$10")
+		writeText("You worked, but there's nothing to work towards anymore.\n\n+$10")
 	}
     updateText()
 };
